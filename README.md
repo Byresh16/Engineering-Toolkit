@@ -1,40 +1,51 @@
-# Engineering Toolkit
+### FFmpeg
 
-A combined Windows desktop application with two tabs:
-- **Logs Finder**: selects nearby logs for a target timestamp, copies them into categorized folders, and creates split 7-Zip archives.
-- **Video Cutter Pro**: video trimming, issue-based cutting, progress/cancel controls, and optional archive creation.
+FFmpeg is used for video processing, cutting, encoding, and format handling in the Video Cutter Pro module.
 
-## Requirements
-- Windows
-- Python 3.10+ (Python 3.11 or newer recommended)
-- FFmpeg executable (`ffmpeg.exe`)
-- 7-Zip command-line executable (`7z.exe`) for archive features
+👉 **Download FFmpeg for Windows:**
 
-No third-party Python packages are required by the app itself.
+[Download FFmpeg](https://www.gyan.dev/ffmpeg/builds/ffmpeg-release-essentials.zip)
 
-## Run from source
-1. Extract the entire `EngineeringToolkit` folder.
-2. Place `ffmpeg.exe` and `7z.exe` inside `VideoCutterPro` if they are not already installed system-wide.
-3. Open PowerShell or Command Prompt in the `EngineeringToolkit` folder.
-4. Run:
+After downloading FFmpeg, make sure `ffmpeg.exe` is available in the location expected by the application.
 
-   ```powershell
-   python main.py
-   ```
+### 7-Zip
 
-## Logs Finder setup
-The Logs Finder tab contains editable source-folder paths. Change them to match your machine. The defaults reflect the paths used in the original version:
-- `D:\99.Log\1.Renault_AndroidLog`
-- `D:\99.Log\2.Renault_Dropbox_Log`
-- `D:\99.Log\4.ecs`
-- `D:\99.Log\5.Teraterm`
-- CAN log folder: select the correct folder on your machine
+7-Zip is required only when using the **Create archive after trimming** feature.
 
-Enter the destination folder, software version, and target timestamp in `YYYY-MM-DD HH-MM-SS` format.
+👉 **Download 7-Zip for Windows:**
 
-`LogsFinder/app.ini` contains supported timestamp formats. The application also has built-in defaults if this file is missing or incomplete.
+[Download 7-Zip](https://www.7-zip.org/download.html)
 
-## Notes
-- The app keeps the two tools in one window using separate tabs.
-- The original Video Cutter Pro code is kept as the basis of the video tab.
-- Archive features require 7-Zip. If it is not installed in a standard location, place `7z.exe` in `VideoCutterPro`.
+For Windows x64, download the **64-bit `.exe` installer**. If the application uses a bundled `7z.exe`, ensure that the executable is available in the location expected by the application.
+
+---
+
+### 📁 Required Application Structure
+
+The project folder should contain the following files and folders. The exact structure may vary depending on whether you run the Python source code or a packaged executable.
+
+**For the packaged Video Cutter Pro application:**
+
+```text
+Video Cutter Pro/
+│
+├── Video Cutter Pro.exe
+├── ffmpeg.exe
+├── 7z.exe
+└── _internal/
+```
+
+**For the Engineering Toolkit source project:**
+
+```text
+EngineeringToolkit_Merged/
+│
+├── main.py
+├── VideoCutterPro/
+│   └── video_cutter_pro.py
+├── LogFinder/
+│   └── ...
+└── .gitignore
+```
+
+Make sure the executable paths match the paths configured in the application.
